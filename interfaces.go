@@ -1,4 +1,4 @@
-package howto
+package typemap
 
 import "iter"
 

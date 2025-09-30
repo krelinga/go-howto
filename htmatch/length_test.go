@@ -3,23 +3,23 @@ package htmatch_test
 import (
 	"testing"
 
-	"github.com/krelinga/go-howto"
 	"github.com/krelinga/go-match"
-	"github.com/krelinga/go-howto/htmatch"
+	"github.com/krelinga/go-typemap"
+	"github.com/krelinga/go-typemap/htmatch"
 )
 
 func TestLength(t *testing.T) {
 	goldie := newGoldie(t)
 	tests := []struct {
 		name string
-		run func() (bool, string)
+		run  func() (bool, string)
 		want bool
-	} {
+	}{
 		{
 			name: "slice_matched",
 			run: func() (bool, string) {
 				s := []string{"a", "b", "c"}
-				m := htmatch.Length(match.GreaterThan(2), howto.Slice[string]{})
+				m := htmatch.Length(match.GreaterThan(2), typemap.Slice[string]{})
 				return m.Match(s)
 			},
 			want: true,
@@ -28,7 +28,7 @@ func TestLength(t *testing.T) {
 			name: "slice_not_matched",
 			run: func() (bool, string) {
 				s := []string{"a", "b", "c"}
-				m := htmatch.Length(match.LessThan(2), howto.Slice[string]{})
+				m := htmatch.Length(match.LessThan(2), typemap.Slice[string]{})
 				return m.Match(s)
 			},
 			want: false,
@@ -37,7 +37,7 @@ func TestLength(t *testing.T) {
 			name: "map_matched",
 			run: func() (bool, string) {
 				m := map[string]int{"a": 1, "b": 2, "c": 3}
-				matcher := htmatch.Length(match.GreaterThan(2), howto.Map[string, int]{})
+				matcher := htmatch.Length(match.GreaterThan(2), typemap.Map[string, int]{})
 				return matcher.Match(m)
 			},
 			want: true,
@@ -46,7 +46,7 @@ func TestLength(t *testing.T) {
 			name: "map_not_matched",
 			run: func() (bool, string) {
 				m := map[string]int{"a": 1, "b": 2, "c": 3}
-				matcher := htmatch.Length(match.LessThan(2), howto.Map[string, int]{})
+				matcher := htmatch.Length(match.LessThan(2), typemap.Map[string, int]{})
 				return matcher.Match(m)
 			},
 			want: false,
@@ -55,7 +55,7 @@ func TestLength(t *testing.T) {
 			name: "string_matched",
 			run: func() (bool, string) {
 				s := "hello"
-				m := htmatch.Length(match.GreaterThan(3), howto.String{})
+				m := htmatch.Length(match.GreaterThan(3), typemap.String{})
 				return m.Match(s)
 			},
 			want: true,
@@ -64,7 +64,7 @@ func TestLength(t *testing.T) {
 			name: "string_not_matched",
 			run: func() (bool, string) {
 				s := "hello"
-				m := htmatch.Length(match.LessThan(3), howto.String{})
+				m := htmatch.Length(match.LessThan(3), typemap.String{})
 				return m.Match(s)
 			},
 			want: false,

@@ -1,4 +1,4 @@
-package howto_test
+package typemap_test
 
 import "testing"
 

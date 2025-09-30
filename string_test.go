@@ -1,23 +1,23 @@
-package howto_test
+package typemap_test
 
 import (
 	"testing"
 
-	"github.com/krelinga/go-howto"
+	"github.com/krelinga/go-typemap"
 )
 
 func TestStringLike(t *testing.T) {
 	t.Run("implements", func(t *testing.T) {
-		assertImplements[howto.StringLike[string], howto.ToString[string]](t)
-		assertImplements[howto.StringLike[string], howto.Compare[string]](t)
-		assertImplements[howto.StringLike[string], howto.Order[string]](t)
+		assertImplements[typemap.StringLike[string], typemap.ToString[string]](t)
+		assertImplements[typemap.StringLike[string], typemap.Compare[string]](t)
+		assertImplements[typemap.StringLike[string], typemap.Order[string]](t)
 	})
 }
 
 func TestString(t *testing.T) {
 	t.Run("implements", func(t *testing.T) {
-		assertImplements[howto.String, howto.ToString[string]](t)
-		assertImplements[howto.String, howto.Compare[string]](t)
-		assertImplements[howto.String, howto.Order[string]](t)
+		assertImplements[typemap.String, typemap.ToString[string]](t)
+		assertImplements[typemap.String, typemap.Compare[string]](t)
+		assertImplements[typemap.String, typemap.Order[string]](t)
 	})
 }
