@@ -1,26 +1,9 @@
 package typemap
 
-import (
-	"cmp"
-)
-
 type ForStringLike[T ~string] struct {
-	CustomToString func(string) string
-}
-
-func (s ForStringLike[T]) ToString(v string) string {
-	if s.CustomToString != nil {
-		return s.CustomToString(v)
-	}
-	return v
-}
-
-func (s ForStringLike[T]) Compare(a, b string) bool {
-	return a == b
-}
-
-func (s ForStringLike[T]) Order(a, b string) int {
-	return cmp.Compare(a, b)
+	StringFunc[T]
+	DefaultCompare[T]
+	DefaultOrder[T]
 }
 
 func (s ForStringLike[T]) Length(v string) int {
