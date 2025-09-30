@@ -4,26 +4,26 @@ import (
 	"cmp"
 )
 
-type StringLike[T ~string] struct {
+type ForStringLike[T ~string] struct {
 	CustomToString func(string) string
 }
 
-func (s StringLike[T]) ToString(v string) string {
+func (s ForStringLike[T]) ToString(v string) string {
 	if s.CustomToString != nil {
 		return s.CustomToString(v)
 	}
 	return v
 }
 
-func (s StringLike[T]) Compare(a, b string) bool {
+func (s ForStringLike[T]) Compare(a, b string) bool {
 	return a == b
 }
 
-func (s StringLike[T]) Order(a, b string) int {
+func (s ForStringLike[T]) Order(a, b string) int {
 	return cmp.Compare(a, b)
 }
 
-func (s StringLike[T]) Length(v string) int {
+func (s ForStringLike[T]) Length(v string) int {
 	return len(v)
 }
 
@@ -34,4 +34,4 @@ func (s StringLike[T]) Length(v string) int {
 // - AllValues(string)
 // - AllKeysAndValues(string)
 
-type String = StringLike[string]
+type ForString = ForStringLike[string]

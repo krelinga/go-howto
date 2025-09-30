@@ -1,31 +1,19 @@
 package typemap
 
-import (
-	"cmp"
-	"fmt"
-)
-
-type IntegerType interface {
-	~int | ~int8 | ~int16 | ~int32 | ~int64 | ~uint | ~uint8 | ~uint16 | ~uint32 | ~uint64 | ~uintptr
+type ForIntegerLike[T ~int | ~int8 | ~int16 | ~int32 | ~int64 | ~uint | ~uint8 | ~uint16 | ~uint32 | ~uint64 | ~uintptr] struct {
+	StringFunc[T]
+	DefaultCompare[T]
+	DefaultOrder[T]
 }
 
-type Integer[T IntegerType] struct {
-	ToStringFunc[T]
-}
-
-func (i Integer[T]) ToString(v T) string {
-	if i.ToStringFunc != nil {
-		return i.ToStringFunc(v)
-	}
-	return fmt.Sprintf("%v", v)
-}
-
-func (i Integer[T]) Compare(a, b T) bool {
-	return a == b
-}
-
-func (i Integer[T]) Order(a, b T) int {
-	return cmp.Compare[T](a, b)
-}
-
-type Int = Integer[int]
+type ForInt = ForIntegerLike[int]
+type ForInt8 = ForIntegerLike[int8]
+type ForInt16 = ForIntegerLike[int16]
+type ForInt32 = ForIntegerLike[int32]
+type ForInt64 = ForIntegerLike[int64]
+type ForUint = ForIntegerLike[uint]
+type ForUint8 = ForIntegerLike[uint8]
+type ForUint16 = ForIntegerLike[uint16]
+type ForUint32 = ForIntegerLike[uint32]
+type ForUint64 = ForIntegerLike[uint64]
+type ForUintptr = ForIntegerLike[uintptr]

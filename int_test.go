@@ -8,8 +8,8 @@ import (
 
 func TestInteger(t *testing.T) {
 	t.Run("implements", func(t *testing.T) {
-		assertImplements[typemap.Int, typemap.ToString[int]](t)
-		assertImplements[typemap.Int, typemap.Compare[int]](t)
-		assertImplements[typemap.Int, typemap.Order[int]](t)
+		assertImplements[typemap.ForInt, typemap.String[int]](t)
+		assertImplements[typemap.ForInt, typemap.Compare[int]](t)
+		assertImplements[typemap.ForInt, typemap.Order[int]](t)
 	})
 }

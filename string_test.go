@@ -8,16 +8,16 @@ import (
 
 func TestStringLike(t *testing.T) {
 	t.Run("implements", func(t *testing.T) {
-		assertImplements[typemap.StringLike[string], typemap.ToString[string]](t)
-		assertImplements[typemap.StringLike[string], typemap.Compare[string]](t)
-		assertImplements[typemap.StringLike[string], typemap.Order[string]](t)
+		assertImplements[typemap.ForStringLike[string], typemap.String[string]](t)
+		assertImplements[typemap.ForStringLike[string], typemap.Compare[string]](t)
+		assertImplements[typemap.ForStringLike[string], typemap.Order[string]](t)
 	})
 }
 
 func TestString(t *testing.T) {
 	t.Run("implements", func(t *testing.T) {
-		assertImplements[typemap.String, typemap.ToString[string]](t)
-		assertImplements[typemap.String, typemap.Compare[string]](t)
-		assertImplements[typemap.String, typemap.Order[string]](t)
+		assertImplements[typemap.ForString, typemap.String[string]](t)
+		assertImplements[typemap.ForString, typemap.Compare[string]](t)
+		assertImplements[typemap.ForString, typemap.Order[string]](t)
 	})
 }

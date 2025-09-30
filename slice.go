@@ -6,30 +6,30 @@ import (
 	"slices"
 )
 
-type SliceLike[T ~[]E, E any] struct {
-	ToStringFunc[T]
+type ForSliceLike[T ~[]E, E any] struct {
+	StringFunc[T]
 }
 
-func (s SliceLike[T, E]) ToString(v T) string {
-	if s.ToStringFunc != nil {
-		return s.ToStringFunc(v)
+func (s ForSliceLike[T, E]) ToString(v T) string {
+	if s.StringFunc != nil {
+		return s.StringFunc(v)
 	}
 	return fmt.Sprintf("%v", v)
 }
 
-func (s SliceLike[T, E]) Length(v T) int {
+func (s ForSliceLike[T, E]) Length(v T) int {
 	return len(v)
 }
 
-func (s SliceLike[T, E]) HasKey(v T, k int) bool {
+func (s ForSliceLike[T, E]) HasKey(v T, k int) bool {
 	return k >= 0 && k < len(v)
 }
 
-func (s SliceLike[T, E]) IsNil(v T) bool {
+func (s ForSliceLike[T, E]) IsNil(v T) bool {
 	return v == nil
 }
 
-func (s SliceLike[T, E]) GetValue(v T, k int) (E, bool) {
+func (s ForSliceLike[T, E]) GetValue(v T, k int) (E, bool) {
 	var zero E
 	if k < 0 || k >= len(v) {
 		return zero, false
@@ -37,7 +37,7 @@ func (s SliceLike[T, E]) GetValue(v T, k int) (E, bool) {
 	return v[k], true
 }
 
-func (s SliceLike[T, E]) AllKeys(v T) iter.Seq[int] {
+func (s ForSliceLike[T, E]) AllKeys(v T) iter.Seq[int] {
 	return func(yield func(int) bool) {
 		for i := range v {
 			if !yield(i) {
@@ -47,12 +47,12 @@ func (s SliceLike[T, E]) AllKeys(v T) iter.Seq[int] {
 	}
 }
 
-func (s SliceLike[T, E]) AllValues(v T) iter.Seq[E] {
+func (s ForSliceLike[T, E]) AllValues(v T) iter.Seq[E] {
 	return slices.Values(v)
 }
 
-func (s SliceLike[T, E]) AllKeysAndValues(v T) iter.Seq2[int, E] {
+func (s ForSliceLike[T, E]) AllKeysAndValues(v T) iter.Seq2[int, E] {
 	return slices.All(v)
 }
 
-type Slice[E any] = SliceLike[[]E, E]
+type ForSlice[E any] = ForSliceLike[[]E, E]
