@@ -51,7 +51,7 @@ func (s ForSliceLike[T, E]) AllValues(v T) iter.Seq[E] {
 	return slices.Values(v)
 }
 
-func (s ForSliceLike[T, E]) AllKeysAndValues(v T) iter.Seq2[int, E] {
+func (s ForSliceLike[T, E]) AllKeyValues(v T) iter.Seq2[int, E] {
 	return slices.All(v)
 }
 

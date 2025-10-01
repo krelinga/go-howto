@@ -18,7 +18,7 @@ func TestStringLike(t *testing.T) {
 		assertImplements[Got, typemap.GetValue[myString, int, rune]](t)
 		assertImplements[Got, typemap.AllKeys[myString, int]](t)
 		assertImplements[Got, typemap.AllValues[myString, rune]](t)
-		assertImplements[Got, typemap.AllKeysAndValues[myString, int, rune]](t)
+		assertImplements[Got, typemap.AllKeyValues[myString, int, rune]](t)
 	})
 }
 
@@ -32,6 +32,6 @@ func TestString(t *testing.T) {
 		assertImplements[typemap.ForString, typemap.GetValue[string, int, rune]](t)
 		assertImplements[typemap.ForString, typemap.AllKeys[string, int]](t)
 		assertImplements[typemap.ForString, typemap.AllValues[string, rune]](t)
-		assertImplements[typemap.ForString, typemap.AllKeysAndValues[string, int, rune]](t)
+		assertImplements[typemap.ForString, typemap.AllKeyValues[string, int, rune]](t)
 	})
 }

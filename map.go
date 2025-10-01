@@ -43,7 +43,7 @@ func (m ForMapLike[T, K, V]) AllValues(v T) iter.Seq[V] {
 	return maps.Values(v)
 }
 
-func (m ForMapLike[T, K, V]) AllKeysAndValues(v T) iter.Seq2[K, V] {
+func (m ForMapLike[T, K, V]) AllKeyValues(v T) iter.Seq2[K, V] {
 	return maps.All(v)
 }
 

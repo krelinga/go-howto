@@ -50,6 +50,6 @@ type AllValues[T any, V any] interface {
 	AllValues(T) iter.Seq[V]
 }
 
-type AllKeysAndValues[T any, K any, V any] interface {
-	AllKeysAndValues(T) iter.Seq2[K, V]
+type AllKeyValues[T any, K any, V any] interface {
+	AllKeyValues(T) iter.Seq2[K, V]
 }

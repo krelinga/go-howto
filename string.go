@@ -43,7 +43,7 @@ func (s ForStringLike[T]) AllValues(v T) iter.Seq[rune] {
 	}
 }
 
-func (s ForStringLike[T]) AllKeysAndValues(v T) iter.Seq2[int, rune] {
+func (s ForStringLike[T]) AllKeyValues(v T) iter.Seq2[int, rune] {
 	return func(yield func(int, rune) bool) {
 		for i, r := range v {
 			if !yield(i, r) {
