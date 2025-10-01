@@ -53,3 +53,7 @@ type AllValues[T any, V any] interface {
 type AllKeyValues[T any, K any, V any] interface {
 	AllKeyValues(T) iter.Seq2[K, V]
 }
+
+type Deref[T any] interface {
+	Deref(*T) T
+}
