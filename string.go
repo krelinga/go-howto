@@ -6,7 +6,7 @@ type ForStringLike[T ~string] struct {
 	DefaultOrder[T]
 }
 
-func (s ForStringLike[T]) Length(v string) int {
+func (s ForStringLike[T]) Length(v T) int {
 	return len(v)
 }
 

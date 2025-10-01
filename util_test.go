@@ -1,12 +1,16 @@
 package typemap_test
 
-import "testing"
+import (
+	"reflect"
+	"testing"
+)
 
 func assertImplements[Got, Want any](t *testing.T) {
 	var gotZero Got
 	_, ok := any(gotZero).(Want)
 	if !ok {
-		var wantZero Want
-		t.Errorf("Expected %T to implement %T", gotZero, wantZero)
+		gotName := reflect.TypeFor[Got]().Name()
+		wantName := reflect.TypeFor[Want]().Name()
+		t.Errorf("Type %s does not implement %s", gotName, wantName)
 	}
 }
