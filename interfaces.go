@@ -34,8 +34,8 @@ type HasKey[T any, K any] interface {
 	HasKey(T, K) bool
 }
 
-type IsNil interface {
-	IsNil() bool
+type IsNil[T any] interface {
+	IsNil(t T) bool
 }
 
 type GetValue[T any, K any, V any] interface {
